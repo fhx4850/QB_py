@@ -5,7 +5,7 @@ from QB.http.render import HtmlRender
 
 
 def index():
-    ren = HtmlRender('templates\index.html', {'test': "hello"})
+    ren = HtmlRender('templates\index.html', {'ccc': "hello"})
     ren.add_template_func(hi)
     return ren.render()
 

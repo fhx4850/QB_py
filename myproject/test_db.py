@@ -1,35 +1,24 @@
-import sys, os
-
-sys.path.insert(1, os.path.join(sys.path[0], '..'))
-# from QB.database.db import DbApply
-from QB.database.db_init import DbInitField, DbApply
+from QB.database.configuration.db_init import DbInit
 
 
-class test_tab(DbInitField):
+class TestTab(DbInit):
     def __init__(self):
         super().__init__()
-        self.IntegerField('test_f', 100)
-        self.IntegerField('qqqq', 100, null=True)
-        self.IntegerField('qw', 100)
+        self.charField('profile_name_1', 100)
+        # self.integerField('qqqq', 200, null=True)
+        self.dateTimeField('qw', 6)
 
 
-class QB(DbInitField):
+# class QB(DbInit):
+#     def __init__(self):
+#         super().__init__()
+#         self.integerField('qb', 100)
+#         self.charField('hello', 200)
+#         # self.charField('Hello_w', 200)
+
+
+class TestTwo(DbInit):
     def __init__(self):
         super().__init__()
-        self.IntegerField('qb', 200)
-        self.CharField('hello', 200)
-        self.CharField('Hello_w', 200)
-
-
-class TestTwo(DbInitField):
-    def __init__(self):
-        super().__init__()
-        self.IntegerField('two', 100)
-
-
-test_tab()
-QB()
-TestTwo()
-
-d = DbApply()
-d.apply()
+        self.textField('two', 100)
+        self.textField('three', 100)
