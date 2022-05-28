@@ -1,12 +1,12 @@
-from QB.database.configuration.db_init import DbInit
+from QB.database.fields.object import DbInit
 
 
-class TestTab(DbInit):
+class TestTab6(DbInit):
     def __init__(self):
         super().__init__()
         self.charField('profile_name_1', 100)
-        # self.integerField('qqqq', 200, null=True)
-        self.dateTimeField('qw', 6)
+        self.integerField('qqqq', 200, null=True)
+        self.charField('qw', 6, null=True)
 
 
 # class QB(DbInit):
