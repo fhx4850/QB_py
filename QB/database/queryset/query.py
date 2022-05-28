@@ -151,6 +151,8 @@ class Query(DB):
             print(e)
 
     def insert_field_data(self, table_name, fields: dict):
+        # print(table_name)
+        # print(fields)
         """
         Adds data to a table.
 
@@ -240,6 +242,13 @@ class Query(DB):
         list
         """
         return self.custom_query(f'SELECT {value} FROM `{table_name}`', db_connection=True, dictionary=dictionary)
+
+    def select_tables_ob(self, table_name, order_by, value='*', desc=False, dictionary=False):
+        if desc:
+            return self.custom_query(f'SELECT {value} FROM `{table_name}` ORDER BY {order_by} DESC', db_connection=True, dictionary=dictionary)
+        else:
+            return self.custom_query(f'SELECT {value} FROM `{table_name}` ORDER BY {order_by}', db_connection=True,
+                                     dictionary=dictionary)
 
     def select_tables_w(self, value, table_name, where, dictionary=False):
         """
@@ -404,3 +413,7 @@ class Query(DB):
 
     def delete_table(self, table_name):
         self.custom_query(f'DROP TABLE `{table_name}`', db_connection=True)
+
+    def change_table_name(self, old_table_name, new_table_name):
+        if self.search_table_by_name(old_table_name):
+            self.custom_query(f'ALTER TABLE `{old_table_name}` RENAME TO `{new_table_name}`', db_connection=True)

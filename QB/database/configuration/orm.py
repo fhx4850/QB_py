@@ -406,3 +406,11 @@ class DbOrm:
         for i in tab:
             self.__query.delete_row('tables', 'table_name', i['table_name'])
         self.__query = Query(bs.DATABASE_USER)
+
+    def rename_table(self, old_table_name, new_table_name):
+        self.__query = Query(bs.DATABASE_USER)
+        self.__query.change_table_name(old_table_name, new_table_name)
+        # self.__query = Query(bs.DATABASE_ORM)
+        # if self.__query.search_field_data('tables', 'table_name', old_table_name):
+        #     self.__query.delete_row('tables', 'table_name', old_table_name)
+        #     self.__query.insert_field_data('tables', {'table_name': new_table_name, 'tag': 'no_action'})
